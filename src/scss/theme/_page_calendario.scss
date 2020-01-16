@@ -1,0 +1,77 @@
+#Diciembre{
+    order: 3;
+}
+#Noviembre{
+    order: 2;
+}
+#Octubre{
+    order: 1;
+}
+#container-day-months{
+    
+    display: flex;
+    flex-direction: column;
+
+    .date{
+        flex-basis: 70%;
+        
+
+       p{   
+           height: 100%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           font-size: 3.6em;
+           font-weight: bold;
+           color: white;
+       } 
+    }
+    .day{
+        flex-basis: 30%;
+    }
+}
+
+.informacion-del-evento{
+    .card-body{
+        padding: .5rem 0rem;
+    }
+    .informacion-evento__item{
+        margin: 0!important;
+        font-size: .9rem;
+    }
+}
+
+
+.menu__calendario li {
+    transition: all .3s ease;
+}
+.menu__calendario {
+    background-color: $primary;
+    margin-bottom: 3rem;
+}
+
+.menu__calendario li:hover{
+    background-color: $bg_color_dark;
+    border-radius: 1px;
+
+}
+.menu__calendario li a{
+    color: white;
+    font-size: 1.2rem;
+}
+.menu__calendario .active a {
+    border-bottom: 2px solid white;
+}
+.mes__content > div{
+    margin-bottom: 1.5rem;
+}
+
+.jumbotron{
+    background-color:var(--white_99);
+}
+.cmb2-metabox-title{
+    font-size: 18px!important;
+    text-transform: uppercase;
+    padding: .5rem!important;
+    text-align: center;
+}

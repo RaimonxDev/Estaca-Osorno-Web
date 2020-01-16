@@ -1,0 +1,27 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    min-width: 360px;
+    overflow-x: hidden;
+    background-color: var(--bg_body);
+    position: relative;
+}
+p{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    line-height: 1.7rem;
+    color: #2f2f2f;
+    
+}
+h2 > a, a{
+    color: $secondary;
+}
+a:hover{
+    text-decoration: none;
+}
+hr{
+   
+    border-top:1px solid $primary;
+}
+ul{
+    list-style: none!important;
+}

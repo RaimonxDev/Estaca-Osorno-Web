@@ -1,0 +1,41 @@
+$zease: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// Widgets
+article[data-scroll],
+.widget[data-scroll]{
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translateX(-100px);
+  transition: all 1s $zease};
+
+article[data-scroll="in"],
+.widget[data-scroll="in"] {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+// Imagenes
+.lazy[data-scroll]{
+    opacity: 0;
+    will-change: opacity;
+    transition: all 1s ease;
+}
+.lazy[data-scroll="in"] {
+    opacity: 1;
+   
+}
+
+//  Contenido
+.entry-content[data-scroll],
+.entry-content.single-content[data-scroll]{
+    opacity: 0;
+    will-change: transform,opacity;
+    transform: translateX(-10px);
+    transition: transform .2s ease;
+}
+
+.entry-content[data-scroll='in'],
+.entry-content.single-content[data-scroll='in']{
+    opacity: 1;
+    transform: translateX(0px);
+}

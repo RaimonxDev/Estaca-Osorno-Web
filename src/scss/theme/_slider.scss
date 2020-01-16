@@ -1,0 +1,63 @@
+.slider .card {
+    border: 0;
+    padding: .7rem;
+}
+.slick-dots li button::before{
+    font-size: 10px;
+}
+.slick-dots li.slick-active button::before {
+    color: $secondary!important;
+}
+
+.avatar
+{
+    border-radius: 50%;
+    margin: 0 auto;
+    width: var(--size_m);
+    height: var(--size_m);
+
+  
+}
+.icon{
+    width: var(--size_m);
+    height: var(--size_m);
+    border-radius: 0;
+
+}
+
+.icon__lider{
+    width: var(--size_lg);
+    height: var(--size_lg);
+
+}
+
+.dia__publicacion , .comments, .fecha__publicacion{
+    p{
+        margin: 0;
+    }
+}
+.fecha__publicacion {
+  
+    .dia__publicacion{
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+    }
+    
+    .mes__publicacion{
+
+        font-size: 0.9rem;
+        font-weight: 400;
+        text-transform: uppercase;
+
+    }
+}
+
+// mejora la visibilidad de las flechas de desplazamiento
+.container{
+    padding-left: 35px!important;
+    padding-right: 35px!important;
+}
+.slick-next::before, .slick-prev::before{
+    color: $bg_color_dark!important;
+}

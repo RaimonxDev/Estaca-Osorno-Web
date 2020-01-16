@@ -1,0 +1,46 @@
+// This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+:root {
+    --size_p : 24px;
+    --size_m : 36px;
+    --size_lg: 48px; 
+    --separador : 2px solid $primary;
+    --font_primary :'Nunito', sans-serif; 
+    --font_secundary: 'Lato', sans-serif;
+    --white_99 : hsl(0, 0%, 99%);
+    --bg_body: var(--white_99)
+}
+    //General
+@import './reset';
+
+// Index.php
+
+    //logo
+
+    //nav-bar
+@import './nav';
+    //main
+
+@import './main';
+    //Slider
+@import './slider';
+
+
+// Pagina capillas
+@import './page_capilla';
+    //widget
+@import './widget';  
+
+    // TAG Template
+@import './tag';  
+
+    //Comentarios
+@import './comentarios';
+
+@import './hacks';
+    
+    //eventos
+@import './page_calendario';
+    
+@import './transiciones';    
+@import './contador';
+@import './footer';
