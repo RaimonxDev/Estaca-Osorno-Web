@@ -26,7 +26,6 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
 				
 			//js
 			
-			
 			wp_enqueue_script( 'jquery-3','//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), '3.4.1',true);
 			
 			wp_enqueue_script( 'slick',get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.9',true);
@@ -36,11 +35,6 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
 			
 			wp_enqueue_script( 'moments_es','//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js', array('moments'), '2.24.0',true);
 			
-			wp_enqueue_script( 'scroll_out','//unpkg.com/scroll-out/dist/scroll-out.min.js', array('moments_es'), '2.0',true);
-			
-			// wp_enqueue_script( 'headromm',get_template_directory_uri(  ).'/js/headroom.min.js', array('scroll_out'), '2.0',true);
-	
-			// wp_enqueue_script( 'app',get_template_directory_uri(  ).'/js/app.js', array(), '1.0',true);
 			
 		$the_theme     = wp_get_theme();
 		$theme_version = $the_theme->get( 'Version' );
