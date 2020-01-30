@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-	<header class="entry-header">
+	<header class="entry-header animated fadeIn">
 	<?php echo get_the_post_thumbnail( $post->ID, 'medium-large' , array('class' => 'img-fluid mb-5 rounded lazy')); ?>
 		
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>

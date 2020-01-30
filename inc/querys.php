@@ -193,7 +193,7 @@ function filtro_meses($mes){
 }
 
 
-function consulta_eventos_proximos() {
+function consulta_eventos_proximos($mostrar =1) {
     
     $HoyUTC_3 = new DateTime();
     $HoyUTC_3->modify('-3 hours');
@@ -204,7 +204,7 @@ function consulta_eventos_proximos() {
        'orderby' => 'meta_value', // We want to organize the events by date
        'meta_key' => 'actividad_fecha', // Grab the "start date" field created via "More Fields" plugin (stored in YYYY-MM-DD format)
        'order' => 'ASC', // ASC is the other option
-       'posts_per_page' => 1, // Let's show them all.
+       'posts_per_page' => $mostrar, // Let's show them all.
        
        'meta_query' => array( // WordPress has all the results, now, return only the events after today's date
         array(

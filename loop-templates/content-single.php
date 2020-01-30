@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 
 	
 
-	<div class="entry-content single-content" data-scroll>
+	<div class="entry-content single-content bg-white p-md-5" data-scroll>
 		
 	<div class="meta">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>

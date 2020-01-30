@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<article data-scroll <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<article class="article-load" id="post-<?php the_ID(); ?>">
 	<div class="row">
 
 		<div class="col-12">
@@ -36,11 +36,11 @@ defined( 'ABSPATH' ) || exit;
 		
 		<?php if ( has_post_thumbnail() ) : ?>
 			<div class="col-lg-6 col-12 align-self-center">
-				<img data-scroll data-src= "<?php echo get_the_post_thumbnail_url($post->ID, 'medium-large' )?>" class="lazy">
+				<img data-src= "<?php echo get_the_post_thumbnail_url($post->ID, 'medium-large' )?>" class="lazy">
 			</div>	<!--col-md-6 imagen-->
 			
 			<div class="col-lg-6 col-12">
-				<div class="entry-content" data-scroll>
+				<div class="entry-content">
 
 					<?php the_excerpt(); ?>
 

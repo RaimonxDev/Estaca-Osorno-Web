@@ -49,37 +49,44 @@ jQuery(document).ready(function($){
 
 (function(){
 
-    document.addEventListener('DOMContentLoaded', ()=>{
+     document.addEventListener('DOMContentLoaded', ()=>{
       
-    // Funcion lazy para las imagenes   
+    // Funcion lazy para las imagenes y animacion para los posts 
     let images = [...document.querySelectorAll('.lazy')];
+    let articles = [...document.querySelectorAll('.article-load')]
   
-    const interactSettings = {
-      root: document.querySelector('.center'),
-      rootMargin: '0px 0px 200px 0px' };
+    const interactSettings = {  
+      rootMargin: '0px 0px 200px 0px', 
+      threshold: 0
+    }
     
-    
-    function onIntersection(imageEntites) {
-      imageEntites.forEach(image => {
-        if (image.isIntersecting) {
-          observer.unobserve(image.target);
-          image.target.src = image.target.dataset.src;
-          image.target.onload = () => image.target.classList.add('loaded');
+    function onIntersection(entries) {
+      entries.forEach(entry => {
+ 
+        if(entry.target.tagName === 'IMG') {
+
+          if(entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            entry.target.src = entry.target.dataset.src;
+            entry.target.onload = () => entry.target.classList.add('animated','img-loaded');
+          }
         }
+
+        if (entry.target.tagName === 'ARTICLE') {
+          if (entry.isIntersecting){
+                observer.unobserve(entry.target)
+                entry.target.classList.add('animated','article-loaded')
+          }
+        }
+
       });
     }
     
     let observer = new IntersectionObserver(onIntersection, interactSettings);
     
     images.forEach(image => observer.observe(image));
-  
+    articles.forEach(article => observer.observe(article));
 
-    // Libreria ScrollOut 
-    ScrollOut({
-        once : true
-    });
-  
-    
     
     // Navbar 
     
@@ -157,30 +164,36 @@ jQuery(document).ready(function($){
     
       const timerUpdate = setInterval( () => {
           // llamada a funcion getRemai
-        let time = obtenerFechaRestante(fechaEvento);
+        let time = obtenerFechaRestante(fechaEvento),
+        class_color = 'text-warning',
+        class_numero = 'contador-numero',
+        class_texto = 'h5';  
+        
         el.innerHTML = 
         
         `
         <h1 class="h4 pb-1">¿Cuánto Falta?</h1>
-        <div class="container row flex-column flex-md-row justify-content-center align-items-center">
-          <div class="col-12 col-md-3">
-            <p class="number text-warning">${time.remainDays}</p>
-            <p class="text-primary">Dias</p>
+        <div class="container row flex-md-row justify-content-center 
+        align-items-center contador">
+          
+          <div class="col-6 col-md-3">
+            <p class="number ${class_color} ${class_numero}">${time.remainDays}</p>
+            <p class="text-primary ${class_texto}">Dias</p>
           </div> 
           
-          <div class="col-12 col-md-3">
-            <p class="number text-warning">${time.remainHours}</p>
-            <p class="text-primary">Horas</p>
+          <div class="col-6 col-md-3">
+            <p class="number ${class_color} ${class_numero}">${time.remainHours}</p>
+            <p class="text-primary ${class_texto} ">Horas</p>
           </div>
           
-          <div class="col-12 col-md-3">
-            <p class="number text-warning">${time.remainMinutes}</p>
-            <p class="text-primary">Minutos</p>
+          <div class="col-6 col-md-3 pt-3 pt-md-0">
+            <p class="number ${class_color} ${class_numero}">${time.remainMinutes}</p>
+            <p class="text-primary ${class_texto}">Minutos</p>
           </div>
           
-          <div class="col-12 col-md-3">
-            <p class="number text-warning">${time.remainSeconds}</p>
-            <p class="text-primary">Segundos</p>
+          <div class="col-6 col-md-3 pt-3 pt-md-0">
+            <p class="number ${class_color} ${class_numero}">${time.remainSeconds}</p>
+            <p class="text-primary ${class_texto}">Segundos</p>
           </div>
         
         </div>`;

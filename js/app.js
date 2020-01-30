@@ -44,23 +44,34 @@ jQuery(document).ready(function ($) {
 
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
-    // Funcion lazy para las imagenes   
+    // Funcion lazy para las imagenes y animacion para los posts 
     var images = _toConsumableArray(document.querySelectorAll('.lazy'));
 
+    var articles = _toConsumableArray(document.querySelectorAll('.article-load'));
+
     var interactSettings = {
-      root: document.querySelector('.center'),
-      rootMargin: '0px 0px 200px 0px'
+      rootMargin: '0px 0px 200px 0px',
+      threshold: 0
     };
 
-    function onIntersection(imageEntites) {
-      imageEntites.forEach(function (image) {
-        if (image.isIntersecting) {
-          observer.unobserve(image.target);
-          image.target.src = image.target.dataset.src;
+    function onIntersection(entries) {
+      entries.forEach(function (entry) {
+        if (entry.target.tagName === 'IMG') {
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            entry.target.src = entry.target.dataset.src;
 
-          image.target.onload = function () {
-            return image.target.classList.add('loaded');
-          };
+            entry.target.onload = function () {
+              return entry.target.classList.add('animated', 'img-loaded');
+            };
+          }
+        }
+
+        if (entry.target.tagName === 'ARTICLE') {
+          if (entry.isIntersecting) {
+            observer.unobserve(entry.target);
+            entry.target.classList.add('animated', 'article-loaded');
+          }
         }
       });
     }
@@ -68,10 +79,9 @@ jQuery(document).ready(function ($) {
     var observer = new IntersectionObserver(onIntersection, interactSettings);
     images.forEach(function (image) {
       return observer.observe(image);
-    }); // Libreria ScrollOut 
-
-    ScrollOut({
-      once: true
+    });
+    articles.forEach(function (article) {
+      return observer.observe(article);
     }); // Navbar 
 
     var navbar = document.getElementById("wrapper-navbar"); // Get the offset position of the navbar
@@ -141,8 +151,11 @@ jQuery(document).ready(function ($) {
       var el = document.getElementById(elem);
       var timerUpdate = setInterval(function () {
         // llamada a funcion getRemai
-        var time = obtenerFechaRestante(fechaEvento);
-        el.innerHTML = "\n        <h1 class=\"h4 pb-1\">\xBFCu\xE1nto Falta?</h1>\n        <div class=\"container row flex-column flex-md-row justify-content-center align-items-center\">\n          <div class=\"col-12 col-md-3\">\n            <p class=\"number text-warning\">".concat(time.remainDays, "</p>\n            <p class=\"text-primary\">Dias</p>\n          </div> \n          \n          <div class=\"col-12 col-md-3\">\n            <p class=\"number text-warning\">").concat(time.remainHours, "</p>\n            <p class=\"text-primary\">Horas</p>\n          </div>\n          \n          <div class=\"col-12 col-md-3\">\n            <p class=\"number text-warning\">").concat(time.remainMinutes, "</p>\n            <p class=\"text-primary\">Minutos</p>\n          </div>\n          \n          <div class=\"col-12 col-md-3\">\n            <p class=\"number text-warning\">").concat(time.remainSeconds, "</p>\n            <p class=\"text-primary\">Segundos</p>\n          </div>\n        \n        </div>");
+        var time = obtenerFechaRestante(fechaEvento),
+            class_color = 'text-warning',
+            class_numero = 'contador-numero',
+            class_texto = 'h5';
+        el.innerHTML = "\n        <h1 class=\"h4 pb-1\">\xBFCu\xE1nto Falta?</h1>\n        <div class=\"container row flex-md-row justify-content-center \n        align-items-center contador\">\n          \n          <div class=\"col-6 col-md-3\">\n            <p class=\"number ".concat(class_color, " ").concat(class_numero, "\">").concat(time.remainDays, "</p>\n            <p class=\"text-primary ").concat(class_texto, "\">Dias</p>\n          </div> \n          \n          <div class=\"col-6 col-md-3\">\n            <p class=\"number ").concat(class_color, " ").concat(class_numero, "\">").concat(time.remainHours, "</p>\n            <p class=\"text-primary ").concat(class_texto, " \">Horas</p>\n          </div>\n          \n          <div class=\"col-6 col-md-3 pt-3 pt-md-0\">\n            <p class=\"number ").concat(class_color, " ").concat(class_numero, "\">").concat(time.remainMinutes, "</p>\n            <p class=\"text-primary ").concat(class_texto, "\">Minutos</p>\n          </div>\n          \n          <div class=\"col-6 col-md-3 pt-3 pt-md-0\">\n            <p class=\"number ").concat(class_color, " ").concat(class_numero, "\">").concat(time.remainSeconds, "</p>\n            <p class=\"text-primary ").concat(class_texto, "\">Segundos</p>\n          </div>\n        \n        </div>");
 
         if (time.remainTime <= 1) {
           clearInterval(timerUpdate);
