@@ -3,14 +3,34 @@
 }    
 .widget-title{
     padding-top: 1.5rem;
-}
-// .widget-title::before{
-//     color: $primary;
-//     display: inline-block;
-//     padding: .5rem;
-//     font-size: 1.5rem;
-//     content: "";
-//     background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/></svg>");
-//     background-repeat: no-repeat;
-//     background-size: 1rem 1rem;
-// }  
+    color:$danger;
+  }
+  .widget-title + ul li a{
+    color: #196991;
+    transition: font-weight .2s ease;
+  }
+  .widget-title + ul li:hover a{
+    color: #196991;
+    font-weight: bold;
+  }
+  
+  .comment-author-link{
+    color:#196991;
+    font-weight: bold;
+  }
+  .recentcomments {
+   
+    margin: .5rem;
+    .order--1{
+     order: -1;
+   }
+    
+    span{
+      margin-right: .5rem;
+    }
+    a{
+      font-weight: bold;
+      color: $danger;
+      order: 2;
+    }
+  }

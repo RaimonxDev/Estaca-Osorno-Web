@@ -100,7 +100,7 @@ if ( ! function_exists( 'understrap_widgets_init' ) ) {
 				'name'          => __( 'Right Sidebar', 'understrap' ),
 				'id'            => 'right-sidebar',
 				'description'   => __( 'Right sidebar widget area', 'understrap' ),
-				'before_widget' => '<aside id="%1$s" class="widget %2$s title-widgets" data-scroll>',
+				'before_widget' => '<aside id="%1$s" class="widget %2$s title-widgets">',
 				'after_widget'  => '</aside>',
 				'before_title'  => '<h3 class="widget-title">',
 				'after_title'   => '</h3>',

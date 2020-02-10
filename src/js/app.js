@@ -226,9 +226,33 @@ jQuery(document).ready(function($){
    });
    
   const TITULO_SOLICITUDES = document.getElementById('titulo-formulario');
-   TITULO_SOLICITUDES.classList.add('alert')
-   TITULO_SOLICITUDES.classList.add('alert-info', 'h3')
 
+  if(TITULO_SOLICITUDES){
+    TITULO_SOLICITUDES.classList.add('alert')
+    TITULO_SOLICITUDES.classList.add('alert-info', 'h3')
+  }
+
+  let iconUser = `<svg class="bi bi-person-fill order--1" width="1.6em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M5 16s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H5zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+    </svg>`;
+  let iconDoc = `<svg class="bi bi-document-text order-1" width="1.6em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/>
+  <path fill-rule="evenodd" d="M6.5 14a.5.5 0 01.5-.5h3a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+    </svg>`
+
+
+  //  agregar img a widget
+
+  const imagenes= document.querySelectorAll('.title-widgets ul li');
+  let arrayImagenes = Array.from(imagenes);
+  arrayImagenes.forEach(imagen => {
+
+    if(imagen.className === 'recentcomments'){
+      imagen.classList.add('d-flex', 'align-items-center', 'flex-wrap')
+      imagen.innerHTML += iconDoc;
+      imagen.innerHTML += iconUser;
+    }
+  });
 
    
 }) //content-loaded

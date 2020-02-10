@@ -1,6 +1,6 @@
 <?php
 /** 
-* Template Name: calendario
+* Template Name: Calendario
 **/
 ?>
 <?php

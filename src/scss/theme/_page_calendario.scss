@@ -12,10 +12,10 @@
     display: flex;
     flex-direction: column;
 
-    .date{
+    .date,
+    .date-conferencia{
         flex-basis: 70%;
         
-
        p{   
            height: 100%;
            display: flex;
@@ -26,6 +26,11 @@
            color: white;
        } 
     }
+    .date-conferencia p{
+        height: auto;
+        font-size: 2em;
+    }
+
     .day{
         flex-basis: 30%;
     }
@@ -86,3 +91,30 @@
         column-count: 3;
       }
   }
+.bg-detalles-actividad{
+    --bg-calendario-detalle :'' ;
+    background-image: var(--bg-calendario-detalle);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    height: 60vh;
+}
+
+.informacion-calendario{
+    margin-top: -15rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0px 1px 3px $dark;
+}
+.wrapper {
+    padding-bottom: 0!important;
+}
+
+.contain{
+    border-left: 4px solid $danger ;
+    border-radius: 2px;
+
+    p{
+        padding-left: 1rem;
+    }
+}

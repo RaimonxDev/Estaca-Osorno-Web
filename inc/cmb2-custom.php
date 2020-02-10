@@ -167,14 +167,12 @@ $infoActividad->add_field( array(
 	'type' => 'textarea_small',
 ) );
 
-// $infoActividad->add_field( array(
-// 	'name' => esc_html__( 'Hora de Inicio', 'cmb2' ),
-// 	'desc' => esc_html__( 'Inicio de Reunion', 'cmb2' ),
-// 	'id'   => $prefix.'hora_inicio',
-// 	'type' => 'text_time',
-// 	'time_format' => 'H:i', // Set to 24hr format
-// ) );
-
+$infoActividad->add_field( array(
+	'name' => esc_html__( '¿Es una Conferencia?', 'cmb2' ),
+	'desc' => esc_html__( 'Marque si solo es una conferencia, que toma más de 1 día', 'cmb2' ),
+	'id'   => $prefix.'conferecia',
+	'type' => 'checkbox',
+) );
 $infoActividad->add_field( array(
 	'name' => esc_html__( 'Fecha del Evento', 'cmb2' ),
 	'desc' => esc_html__( 'Añadir fecha de la actividad', 'cmb2' ),

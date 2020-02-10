@@ -125,25 +125,59 @@ function filtro_meses($mes){
             $direcion_evento = get_post_meta( get_the_ID(), 'actividad_direccion',true);
             $hora_evento = get_post_meta( get_the_ID(), 'actividad_hora_inicio',true);
             $fecha_evento = get_post_meta( get_the_ID(), 'actividad_fecha',true);
+            $fecha_evento_fin = get_post_meta( get_the_ID(), 'actividad_hora_fin',true);
             $sin_confirmacion = 'Por confirmar';
+            // checkbox de conferencia
+            $on= get_post_meta( get_the_ID(), 'actividad_conferecia', true );
 
             echo '<div class="card">';
                 echo '<div class="row">';
-                    echo'<div class="col-4" id="container-day-months">';
+                    echo'<div class="col-5" id="container-day-months">';
                        
-                    echo '<div class="bg-primary date">';
-                        if($fecha_evento){
-                            echo '<p class="p-2">'.gmdate("d",$fecha_evento).'</p>';
-                        }else{
-                            echo '<p class="text-muted">--</p>';
-                        }
-                        echo '</div>';//date
-                        
-                        echo '<div class="day">';
-                         $translate_day = fecha_Es(gmdate("d-m-Y", $fecha_evento));
-                            echo '<p  class="text-center text-muted">'.$translate_day.'</p>';
-                        echo '</div>'; //day
+                    if($on === 'on'){
 
+                        echo '<div class="bg-danger date-conferencia">';
+                            if($fecha_evento){
+                                echo '<p class="pt-2">'.gmdate("d",$fecha_evento).' </p>';
+                                echo '<p> - </p>';
+                                echo '<p class="pb-2">'.gmdate("d",$fecha_evento_fin).' </p>';
+
+                            } else {
+                                echo '<p class="text-muted">--</p>';
+                            }
+                            
+                            echo '</div>';//date
+                            
+                            echo '<div class="day">';
+                            $translate_day = fecha_Es(gmdate("d-m-Y", $fecha_evento));
+                            $translate_day_fin = fecha_Es(gmdate("d-m-Y", $fecha_evento_fin));
+                                
+                                echo '<p class="text-center pt-1 m-0">Conferencia</p>';
+                                
+                                echo '<p class="text-center p-0 m-0 text-muted"><small>Inicia: <strong>'.$translate_day.'</strong></small></p>';
+                                
+                                echo '<p  class="text-center p-0 m-0 text-muted"><small>Finaliza: <strong>'.$translate_day_fin.'</
+                                strong></small></p>';
+                        
+                            echo '</div>'; //day
+                    
+                    }else{
+
+                        echo '<div class="bg-primary date">';
+                            if($fecha_evento){
+                                echo '<p class="p-2">'.gmdate("d",$fecha_evento).'</p>';
+                            }else{
+                                echo '<p class="text-muted">--</p>';
+                            }
+                        echo '</div>';//date
+                            
+                        echo '<div class="day">';
+                            $translate_day = fecha_Es(gmdate("d-m-Y", $fecha_evento));
+                                echo '<p  class="text-center text-muted">'.$translate_day.'</p>';
+                        echo '</div>'; //date
+
+                    }
+                        
                     echo'</div>';//col-4
                     
                     echo'<div class="col informacion-del-evento">';              
@@ -160,9 +194,9 @@ function filtro_meses($mes){
                                 //    ----------------
                             if($fecha_evento){
                                 
-                                echo '<p class="informacion-evento__item informacion_evento__hora card-text"><strong>Hora de inicio :</strong>'.gmdate('H:i',$fecha_evento).'<br>';
+                                echo '<p class="informacion-evento__item informacion_evento__hora card-text"><strong>Hora de inicio : </strong>'.gmdate('H:i',$fecha_evento).'<br>';
                             }else{
-                                echo '<p class="informacion-evento__item informacion_evento__hora card-text"><strong>Hora de inicio :</strong>'.$sin_confirmacion.'<br>';
+                                echo '<p class="informacion-evento__item informacion_evento__hora card-text"><strong>Hora de inicio : </strong>'.$sin_confirmacion.'<br>';
                             }
                                     //    ----------------
                             if($direcion_evento){
@@ -172,13 +206,26 @@ function filtro_meses($mes){
                                 echo '<p class="informacion-evento__item informacion_evento__direccion card-text"><strong>Direccion : </strong>'.$sin_confirmacion.'<br>';
                             }
                                 //   ----------------
-                            if($fecha_evento){
-                                
-                                echo '<p class="informacion-evento__item informacion_evento__fecha card-text"><strong>Fecha : </strong>' .gmdate("d-m-Y", $fecha_evento).'<br>';
-                            }else{
-                                echo '<p class="informacion-evento__item informacion_evento__fecha card-text"><strong>Fecha : </strong>'.$sin_confirmacion.'<br>';}
-                                    
 
+                            if($on=== 'on'){
+
+                                if($fecha_evento){
+                                    
+                                    echo '<p class="informacion-evento__item informacion_evento__fecha card-text"><strong>Inicia : </strong>' .gmdate("d-m-Y", $fecha_evento).'<br>';
+                                    echo '<p class="informacion-evento__item informacion_evento__fecha card-text"><strong>Finaliza : </strong>' .gmdate("d-m-Y", $fecha_evento_fin).'<br>';
+                                }else{
+                                    echo '<p class="informacion-evento__item informacion_evento__fecha card-text"><strong>Fecha : </strong>'.$sin_confirmacion.'<br>';}
+                                        
+                            } else{
+                                if($fecha_evento){
+                                    
+                                    echo '<p class="informacion-evento__item informacion_evento__fecha card-text"><strong>Fecha : </strong>' .gmdate("d-m-Y", $fecha_evento).'<br>';
+                                }else{
+                                    echo '<p class="informacion-evento__item informacion_evento__fecha card-text"><strong>Fecha : </strong>'.$sin_confirmacion.'<br>';}
+                            }   
+                            if(get_the_content()){
+                                echo '<a type="button" class="btn btn-sm btn-outline-success .text-reset" href="'.get_the_permalink().'">Instruciones</a>';
+                            }
 
                         echo '</div>'; // card body 
                     echo'</div>';  //col
@@ -224,6 +271,7 @@ function consulta_eventos_proximos($mostrar =1) {
           $invitados_evento = get_post_meta( get_the_ID(), 'actividad_invitados',true);
           $fecha_evento =  get_post_meta( get_the_ID(), 'actividad_fecha', true );
           $sin_confirmacion = 'Por confirmar';
+          
           echo '<h1 class="text-center">Proxima actividades</h1>';
           echo "<h1 class='h2 text-center text-primary' id='event-title' data-id='".get_the_ID()."'>".get_the_title()."</h1>";
         echo "<p class='lead pl-3 text-center'>".get_the_content()."</p>";

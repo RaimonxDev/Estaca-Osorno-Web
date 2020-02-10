@@ -57,7 +57,7 @@ function add_search_bar_nav( $search, $args ) {
 
 
 		.'<label class="label-search" for="search_nav">
-			<svg class="bi bi-search text-white" width="1.5rem" viewBox="2 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+			<svg class="bi bi-search text-white" width="24px" viewBox="2 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 		<path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
 		<path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
 			</svg>
@@ -91,5 +91,5 @@ function fecha_Es ($fecha) {
 // add_filter('use_block_editor_for_post', '__return_false', 10);
 
 
-// update_option( 'siteurl', 'http://localhost/estacaOsorno' );
-// update_option( 'home', 'http://localhost/estacaOsorno' );
+update_option( 'siteurl', 'http://localhost/estacaOsorno' );
+update_option( 'home', 'http://localhost/estacaOsorno' );
