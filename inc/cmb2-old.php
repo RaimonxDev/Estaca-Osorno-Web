@@ -21,6 +21,8 @@ if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 	require_once dirname( __FILE__ ) . '/CMB2/init.php';
 }
 
+// desactiva todos los campos de muestra
+return;
 /**
  * Conditionally displays a metabox when used as a callback in the 'show_on_cb' cmb2_box parameter
  *
@@ -256,12 +258,12 @@ function yourprefix_register_demo_metabox() {
 	// This text_datetime_timestamp_timezone field type
 	// is only compatible with PHP versions 5.3 or above.
 	// Feel free to uncomment and use if your server meets the requirement
-	// $cmb_demo->add_field( array(
-	// 	'name' => esc_html__( 'Test Date/Time Picker/Time zone Combo (serialized DateTime object)', 'cmb2' ),
-	// 	'desc' => esc_html__( 'field description (optional)', 'cmb2' ),
-	// 	'id'   => 'yourprefix_demo_datetime_timestamp_timezone',
-	// 	'type' => 'text_datetime_timestamp_timezone',
-	// ) );
+	$cmb_demo->add_field( array(
+		'name' => esc_html__( 'Test Date/Time Picker/Time zone Combo (serialized DateTime object)', 'cmb2' ),
+		'desc' => esc_html__( 'field description (optional)', 'cmb2' ),
+		'id'   => 'yourprefix_demo_datetime_timestamp_timezone',
+		'type' => 'text_datetime_timestamp_timezone',
+	) );
 
 	$cmb_demo->add_field( array(
 		'name' => esc_html__( 'Test Money', 'cmb2' ),

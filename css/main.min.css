@@ -1174,7 +1174,7 @@ nav #searchform{position:relative;height:34px}
 .fecha__publicacion .dia__publicacion{font-family:'Nunito',sans-serif;font-weight:700;font-size:1rem}
 .fecha__publicacion .mes__publicacion{font-size:.9rem;font-weight:400;text-transform:uppercase}
 .container{padding-left:35px !important;padding-right:35px !important}
-.slick-next::before,.slick-prev::before{color:#27769d !important}
+.slick-next::before,.slick-prev::before{color:#e35462 !important}
 .lideres{border-left:2px solid #3ca7dd;border-radius:1px}
 .card.capillas{background-color:inherit}
 .card-header.capilla{background-color:#9c3}
